@@ -15,9 +15,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
       <% if current_user %>
-        <%= link_to('Logout' , destroy_user_session_path , :class =>'glyphicon glyphicon-log-out') %>
+        <li><%= link_to('Logout' , destroy_user_session_path , :class =>'glyphicon glyphicon-log-out') %></li>
       <% else %>
-        <%= link_to('Login' , user_session_path , :class =>'glyphicon glyphicon-log-in') %>
+        <li><%= link_to('Login' , user_session_path , :class =>'glyphicon glyphicon-log-in') %></li>
       <% end %>
       </ul>
     </div>
