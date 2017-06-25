@@ -3,20 +3,21 @@
   <head>
     <title>Blog</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
 	  	<%= render 'layouts/header' %>
-	    <div class="container-fluid text-center">   
+	    <div class="container-fluid text-left">   
 	    	<div class="row content">
 	    		<% if user_signed_in? %>
 	    			<div class="col-sm-2 sidenav">
-				      <p><a href="#">Link</a></p>
-				      <p><a href="#">Link</a></p>
-				      <p><a href="#">Link</a></p>
+				      <% for x in $categ do %>
+				      	<p><%= link_to("#{x.title}",category_path(x.id))%></p>
+				      	<% for y in x.articles do %>
+				      		<p>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to("#{y.title}",article_path(y.id))%></p>	
+				      	<% end %>
+				      <% end %>
 				    </div>
 	    		<% end %>
 	    		<div class="col-sm-8 text-left"> 
