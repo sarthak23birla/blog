@@ -17,7 +17,7 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @article.author %>
+  <%= @article.author.first_name %>
 </p>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
