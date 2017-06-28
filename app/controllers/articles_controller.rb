@@ -6,7 +6,13 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.page(params[:page]).per(2)
+    if(current_user.role == "admin")
+      @articles = Article.page(params[:page]).per(2)
+    elsif(current_user.role == "writer")
+      @articles=Article.where("published=? OR author_id=?",true,current_user.id).page(params[:page]).per(2)
+    else
+      @articles=Article.where(:published => true).page(params[:page]).per(2)
+    end
   end
 
   # GET /articles/1

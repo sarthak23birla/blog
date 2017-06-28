@@ -15,7 +15,13 @@
 				      <% for x in $categ do %>
 				      	<p><%= link_to("#{x.title}",category_path(x.id))%></p>
 				      	<% for y in x.articles do %>
-				      		<p>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to("#{y.title}",article_path(y.id))%></p>	
+				      		<% if(current_user.role == "admin") %> 
+				      			<p>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to("#{y.title}",article_path(y.id))%></p>	
+				      		<% elsif(current_user.role=="writer" && (( y.author_id == current_user.id) || (y.published == true))) %>
+				      			<p>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to("#{y.title}",article_path(y.id))%></p>
+				      		<% elsif(current_user.role=="viewer" && y.published == true) %>
+				      			<p>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to("#{y.title}",article_path(y.id))%></p>
+				      		<% end %>
 				      	<% end %>
 				      <% end %>
 				    </div>
