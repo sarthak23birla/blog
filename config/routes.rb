@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root 'categories#index'
-  resources :articles
+  resources :articles do
+  	member do
+  		resources :comments, only: :create
+  	end
+  end
   resources :categories
   devise_for :users
   get 'auth/login'

@@ -14,7 +14,7 @@
   <strong>Published:</strong>
   <%= @category.published %>
 </p>
-<%if(current_user.role=="admin")%>
+<%if(current_user.admin?)%>
 	<%= link_to 'Edit', edit_category_path(@category) %> |
 <%end%>
 <%= link_to 'Back', categories_path %>

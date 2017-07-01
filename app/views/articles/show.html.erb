@@ -19,7 +19,13 @@
   <strong>Author:</strong>
   <%= @article.author.first_name %>
 </p>
-<% if((current_user.role == "admin" ) ||(current_user.role == "writer")) %>
+<p>
+	<strong>Avatar:</strong>
+	<%= image_tag("#{@article.avatar}" ,:alt=>"Not found/Not Retrived")%>
+</p>
+<% if(current_user.admin?) ||(current_user.writer?) %>
 	<%= link_to 'Edit', edit_article_path(@article) %> 
 <% end %>
 | <%= link_to 'Back', articles_path %>
+
+<%= render 'comments' %>
