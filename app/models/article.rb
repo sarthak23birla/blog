@@ -6,6 +6,6 @@ class Article < ApplicationRecord
   has_many :comments
 
   # ==== scope ======
-  scope :active, -> (user) { where("published=? OR author_id=?", true, user.id) } 
+  scope :active, ->(user){ where("published=? OR author_id=?", true, user.id) } 
   # ==== scope end ======
 end

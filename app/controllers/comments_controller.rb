@@ -1,10 +1,8 @@
 class CommentsController < ApplicationController
 	before_action :set_article, only: [:create]
-
   def create
   	@comment = @article.comments.new(comment_params)
     @comment.commentor = current_user
-
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @article, notice: 'Comment was successfully posted.' }

@@ -1,3 +1,4 @@
+<%= link_to 'Back', articles_path, :class => 'align-left' %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -23,9 +24,8 @@
 	<strong>Avatar:</strong>
 	<%= image_tag("#{@article.avatar}" ,:alt=>"Not found/Not Retrived")%>
 </p>
-<% if(current_user.admin?) ||(current_user.writer?) %>
+<% if(current_user.admin?) ||(current_user.writer? && current_user.id == @article.author.id ) %>
 	<%= link_to 'Edit', edit_article_path(@article) %> 
 <% end %>
-| <%= link_to 'Back', articles_path %>
 
 <%= render 'comments' %>

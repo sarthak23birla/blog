@@ -8,7 +8,7 @@
       <th>Title</th>
       <th>Body</th>
       <th>Published?</th>
-      <% if(current_user.role.admin?) %>
+      <% if(current_user.admin?) %>
         <th colspan="3">Actions</th>
       <% else %>
         <th>Actions</th>
@@ -22,7 +22,7 @@
         <td><%= category.title %></td>
         <td><%= category.body %></td>
         <td><%= category.published%></td>
-        <% if(current_user.role.admin?) %>
+        <% if(current_user.admin?) %>
             <td><%= link_to 'Show', category, class: 'btn btn-default' %></td>
             <td><%= link_to 'Edit', edit_category_path(category), class: 'btn btn-primary' %></td>
             <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
@@ -36,6 +36,6 @@
 <%= paginate @categories %>
 
 <br>
-<%if current_user.role.admin? %>
+<%if current_user.admin? %>
   <%= link_to 'New Category', new_category_path %>
 <% end %>
