@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   	@comment = @article.comments.new(comment_params)
     @comment.commentor = current_user
     respond_to do |format|
+      binding.pry
       if @comment.save
         format.html { redirect_to @article, notice: 'Comment was successfully posted.' }
         format.json { render :show, status: :created, location: @article }
@@ -21,7 +22,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body,:comment_id)
   end
 
 end

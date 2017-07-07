@@ -275,12 +275,26 @@ body {
 						</div>
 					</li>
 					<% end %>
+					<!-- Reply section -->
+						<div class="comments-list reply-list">
+							<%= simple_form_for(@comment, remote: true) do |f| %>
+							  	<%= f.error_notification %>
+							  	<div class="form-inputs">
+							  	  <%= f.input :comment_id, :as => :hidden , :input_html => {:value =>comment.id } %>
+							  	  <%= f.input :body, label: false %>
+							  	</div>
+							  	<div class="form-actions">
+							   	  <%= f.button :submit %>
+							  	</div>
+							<% end %>
+						</div>
 				</ul>
+				
 			</li>
 			<% end %>
 		</ul>
 	</div>
-	</div>
+</div>
 	<!-- comment section -->
 	<div class="col-md-8">
 		<%= simple_form_for(@comment, remote: true) do |f| %>
@@ -292,4 +306,4 @@ body {
 		   	  <%= f.button :submit %>
 		  	</div>
 		<% end %>
-</div>
+	</div>
