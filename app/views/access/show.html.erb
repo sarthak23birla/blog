@@ -1,0 +1,28 @@
+<%= link_to 'Back', access_path, :class => 'align-left' %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @user.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%= @user.last_name %>
+</p>
+<p>
+  <strong>Date Of Birth:</strong>
+  <%= @user.date_of_birth %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+<% if(current_user.admin?) %>
+	<%= link_to 'Edit', edit_access_path(@user) %> 
+<% end %>

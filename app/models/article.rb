@@ -5,6 +5,8 @@ class Article < ApplicationRecord
   mount_uploader :avatar ,AvatarUploader
   has_many :comments
 
+  validates :title, uniqueness: { scope: :author,
+    message: "should happen once per AUTHOR" }
   # ==== scope ======
   scope :active, ->(user){ where("published=? OR author_id=?", true, user.id) } 
   # ==== scope end ======

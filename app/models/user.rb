@@ -13,9 +13,9 @@ class User < ApplicationRecord
   	super.tap do |user|
   		if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"] 
   			user.email = data["email"] if user.email.blank?
-  			user.first_name,user.last_name = data["name"].split(' ')
+  			user.first_name,user.last_name = data["name"].split(' ') if user.first_name.blank? && user.last_name.blank?
   			user.date_of_birth = data["user_birthday"] if user.date_of_birth.blank?
-  			user.image = session["devise.facebook_data"]["info"]["image"]
+  			user.image = session["devise.facebook_data"]["info"]["image"] if user.image.blank?
   			binding.pry
   		end
   	end
@@ -29,3 +29,4 @@ class User < ApplicationRecord
   	end
   end
 end
+

@@ -1,0 +1,32 @@
+<h2>Other Details of the User</h2>
+<%= link_to 'Back', access_path, :class => 'align-left' %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @user.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%= @user.last_name %>
+</p>
+<p>
+  <strong>Date Of Birth:</strong>
+  <%= @user.date_of_birth %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+<p>
+<%= form_tag(:controller=>'user' ,:action => 'update') do %>
+    <%= text_field_tag('Role',params[:role]) %>
+    <%= submit_tag("Update User") %>
+<% end %>
+</p>

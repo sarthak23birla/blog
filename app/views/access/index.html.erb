@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Date of Birth</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.date_of_birth %></td>
+        <td><%= link_to 'Show', access_path(user) %></td>
+        <td><%= link_to 'Edit', edit_access_path(user),:class => 'btn btn-primary' %></td>
+  	  </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @users %>
+<br>
